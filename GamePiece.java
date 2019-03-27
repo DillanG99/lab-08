@@ -11,16 +11,35 @@ public enum GamePiece {
 	private GamePieceAppearance appearance;
 	private int priority;
 	
+	/**
+	 * Sets the value of appearance and priority based on the constant chosen
+	 * @param appearance
+	 * @param priority
+	 */
 	private GamePiece(GamePieceAppearance appearance, int priority) {
 		this.appearance = appearance;
 		this.priority = priority;
 	}
+	/**
+	 * gets the color of the game piece
+	 * @return the color of the game piece
+	 */
 	public Color getColor() {
 		return this.appearance.getColor();
 	}
+	/**
+	 * gets the shape of the game piece
+	 * @return the shape of the game piece
+	 */
 	public Shape getShape() {
 		return this.appearance.getShape();
 	}
+	/**
+	 * Determines which game piece moves first. Pieces move in ascending order of priorities
+	 * @param a
+	 * @param b
+	 * @return the game piece with the lowest priority
+	 */
 	public static GamePiece movesFirst(GamePiece a, GamePiece b) {
 		if(a.priority < b.priority) {
 			return a;
@@ -29,6 +48,11 @@ public enum GamePiece {
 			return b;
 		}
 	}
+	/**
+	 * returns a string of information about the game piece in the format "%s: a %s %s with priority %d"
+	 * (1) the name of the value held in GamePiece. (2) the color of the game piece.
+	 * (3) the shape of the game piece. (4) the priority of the game piece.
+	 */
 	public String toString() {
 		return String.format("%s: a %s %s with priority %d", 
 				this.name(), this.appearance.getColor(), this.appearance.getShape().toString().toUpperCase(), this.priority);
